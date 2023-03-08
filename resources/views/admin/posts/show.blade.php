@@ -10,6 +10,7 @@
         </div>
         <div class="col-12">
             <p><strong class="text-danger">Slug: </strong> {{ $post->slug }}</p>
+            <p><strong>Category: </strong>{{ $post->category ? $post-category-name : 'Without Category' }}</p>
             <label class="d-block text-danger my-3"><strong>Content: </strong></label>
             <p>{{ $post->content }}</p>
         </div>
