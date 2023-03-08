@@ -28,4 +28,18 @@ class StorePostRequest extends FormRequest
             'content' => ['nullable']
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'title.requied'   => 'A Title is Requied to Procede',
+            'title.unique'    => 'A Post With this Title is already IN MEMORY',
+            'title.max'       => 'Post cannot Excede :max Digits'
+        ];
+    }
 }

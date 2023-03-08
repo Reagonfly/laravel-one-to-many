@@ -52,7 +52,7 @@ class PostController extends Controller
 
         $newPost->save();
 
-        return redirect()->route('admin.posts.index')->with('message', 'Post Created Correctly');
+        return redirect()->route('admin.posts.index')->with('message', 'New Post Created Correctly');
     }
 
     /**
@@ -63,7 +63,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -74,7 +74,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -86,7 +86,15 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $form_data = $request->validate();
+
+        $slug = Post::generateSlug($request->title, '-');
+
+        $form_data['slug'] = $slug;
+
+        $post->update($form_data);
+
+        return redirect()->route('admin.posts.index')->with('message', $post->title . 'Modified Successifully');
     }
 
     /**
@@ -97,6 +105,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('message', 'Post Deleted Correctly, hope it Was important!');
     }
 }

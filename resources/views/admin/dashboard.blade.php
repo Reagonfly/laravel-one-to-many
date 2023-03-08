@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col">
             <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
+                <div class="card-header"><strong>{{ __('User Dashboard Is Where You Padawan Are') }}</strong></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,7 +17,7 @@
                     </div>
                     @endif
 
-                    {{ __('Wellcome Back!') }}
+                    <strong class="text-primary">{{ __('Wellcome Back Say I To You') }}</strong>
                 </div>
             </div>
         </div>
