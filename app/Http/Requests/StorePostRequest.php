@@ -24,8 +24,9 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         => ['required', 'unique:post', 'max:150'],
+            'title'         => ['required', 'unique:posts', 'max:150'],
             'content'       => ['nullable'],
+            'author'        => ['nullable'],
             'category_id'   => ['nullable', 'exists:categories,id']
         ];
     }

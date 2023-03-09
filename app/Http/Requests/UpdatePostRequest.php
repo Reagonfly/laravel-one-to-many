@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Exists;
 
 class UpdatePostRequest extends FormRequest
 {
@@ -25,8 +26,10 @@ class UpdatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'   => ['required', Rule::unique('posts')->ignore($this->post), 'max:150'],
-            'content' => ['nullable']
+            'title'         => ['required', Rule::unique('posts')->ignore($this->post), 'max:150'],
+            'content'       => ['nullable'],
+            'author'        => ['nullable'],
+            'category_id'   => ['nullable', 'exists:categories,id']
         ];
     }
 

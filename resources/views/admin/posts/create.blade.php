@@ -27,7 +27,16 @@
                     @enderror
                 </div>
                 <div class="form-group my-3">
-                    <label class="control-label">Category</label>
+                    <label for="control-label">
+                        Author
+                    </label>
+                    <input type="text" class="form-control" placeholder="Author" id="author" name="author">
+                    @error('author')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group my-3">
+                    <label class="control-label">Categories</label>
                     <select class="form-control" name="category_id" id="category_id">
                         @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>

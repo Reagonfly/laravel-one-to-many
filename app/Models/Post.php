@@ -11,7 +11,7 @@ use App\Models\Category;
 class Post extends Model
 {
 
-    protected $fillable = ['title', 'content', 'slug', 'category_id'];
+    protected $fillable = ['title', 'content', 'slug', 'excerpt', 'author', 'category_id'];
 
     use HasFactory;
 

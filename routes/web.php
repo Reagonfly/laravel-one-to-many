@@ -4,7 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
-use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\PostController as PostController;
+use App\Http\Controllers\Admin\CategoryController as CategoryController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('posts', PostController::class)->parameters(['posts' => 'post:slug']);
+    Route::resource('/categories', CategoryController::class)->parameters(['categories' => 'categoty:slug']);
 });
 
 Route::middleware('auth')->group(function () {
